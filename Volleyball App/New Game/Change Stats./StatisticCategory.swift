@@ -101,13 +101,13 @@ struct ChangeStatisticsView: View {
                 Button("Cancel") {
                     presentationMode.wrappedValue.dismiss()
                 }
-                .buttonStyle(FilledButtonStyle(background: Color.gray.opacity(0.4)))
+                .buttonStyle(FilledButtonSt(background: Color.gray.opacity(0.4)))
 
                 Button("Change") {
                     // apply your change logic here
                     presentationMode.wrappedValue.dismiss()
                 }
-                .buttonStyle(FilledButtonStyle(background: Color.accentColor))
+                .buttonStyle(FilledButtonSt(background: Color.accentColor))
             }
             .padding()
         }
@@ -123,7 +123,7 @@ struct ChangeStatisticsView: View {
     }
 }
 
-struct FilledButtonStyle: ButtonStyle {
+struct FilledButtonSt: ButtonStyle {
     let background: Color
     
     func makeBody(configuration: Configuration) -> some View {
