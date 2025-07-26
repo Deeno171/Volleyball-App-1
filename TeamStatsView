@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TeamStatsView: View {
     @Binding var selectedTab: TabSelection
-    @State private var selectedStatsTab = "Overall Statistics"
+    @State private var selectedStatsTab = "Overall Team Statistics"
     @State private var selectedMatch = "ISB vs TAS – July 15th 2025"
     @Environment(\.horizontalSizeClass) var sizeClass
   
@@ -66,7 +66,7 @@ struct TeamStatsView: View {
                     .overlay(Divider(), alignment: .bottom)
 
                     // MARK: Conditional Content
-                    if selectedStatsTab == "Overall Statistics" {
+                    if selectedStatsTab == "Overall Team Statistics" {
                         // Win / Lose row
                         HStack(spacing: 0) {
                             StatColumn(title: "Win", value: "15")
@@ -94,6 +94,7 @@ struct TeamStatsView: View {
                             Dropdown(selected: $selectedMatch, options: matchOptions)
                                 .zIndex(999)
                         }
+                        .id(selectedStatsTab)
                         .frame(maxWidth: .infinity)
                         .padding(.top, 16)
                         .zIndex(10)
@@ -158,8 +159,10 @@ struct TeamStatsView: View {
                         Button(action: {
                                 selectedTab = .myStats
                             }) {
-                                Image(systemName: "person.fill")
+                                Image(systemName: "person")
                                     .font(.title)
+                                    .foregroundColor(.black)
+                                    
                             }
 
                             Button(action: {
@@ -167,13 +170,15 @@ struct TeamStatsView: View {
                             }) {
                                 Image(systemName: "person.3.fill")
                                     .font(.title)
+                                    .foregroundColor(.black)
                             }
 
                             Button(action: {
                                 selectedTab = .newGame
                             }) {
-                                Image(systemName: "plus.circle.fill")
+                                Image(systemName: "plus.circle")
                                     .font(.title)
+                                    .foregroundColor(.black)
                             }
                     }
                     .padding()
@@ -301,7 +306,7 @@ struct ContentView: View {
         case .teamStats:
             TeamStatsView(selectedTab: $selectedTab)
         case .newGame:
-            NewGame()
+            NewGame(selectedTab: $selectedTab)
         }
     }
 }
