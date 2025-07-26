@@ -101,6 +101,7 @@ struct NewGame: View {
                 presentationMode.wrappedValue.dismiss()
             })
         }
+        .navigationViewStyle(.stack) //
     }
 }
 
